@@ -49,7 +49,7 @@ myApp.controller('friendController', function ($scope, friendFactory) {
 }); //ends controller
 
 //5b add factory to provide data to controller
-myApp.factory('friendFactory', function ($http) {
+myApp.factory('friendFactory', function ($http, $location) {
 	//3 factory is a function that returns an object literal
 	//7 add some data
 	var friends = [
@@ -84,6 +84,8 @@ myApp.factory('friendFactory', function ($http) {
 		$http.post('/addfriend', info).success(function(output) {
 			//friends.push({name:info.name})
 			console.log('baby added friend', info);
+			//reload the page to fresh the data
+			$location.path('#/');
 		})
 	}	
 
